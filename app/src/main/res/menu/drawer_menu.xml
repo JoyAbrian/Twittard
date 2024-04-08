@@ -31,4 +31,8 @@
         android:id="@+id/drawerMonetization"
         android:title="Monetisasi"/>
 
+    <item
+        android:id="@+id/drawerSupport"
+        android:title="Pengaturan &amp; Dukungan"/>
+
 </menu>
