@@ -2,8 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:icon="@drawable/"
+        android:icon="@drawable/drawer_profile"
         android:id="@+id/drawerProfile"
-        android:title="My Profile"/>
+        android:title="Profil"/>
+
+    <item
+        android:icon="@drawable/header_logo"
+        android:id="@+id/drawerPremium"
+        android:title="Premium"/>
+
+    <item
+        android:icon="@drawable/drawer_bookmark"
+        android:id="@+id/drawerBookmark"
+        android:title="Markah"/>
+
+    <item
+        android:icon="@drawable/drawer_list"
+        android:id="@+id/drawerList"
+        android:title="Daftar"/>
 
 </menu>
