@@ -25,7 +25,7 @@
             android:layout_gravity="end"
             android:src="@drawable/tweet_dots"
             android:layout_alignParentEnd="true"
-            app:tint="@color/white" />
+            app:tint="@color/white"/>
 
     </RelativeLayout>
 
