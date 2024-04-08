@@ -2,11 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/black"
-    android:paddingBottom="10dp">
+    android:background="@color/black">
 
     <LinearLayout
-        android:id="@+id/contentLayout"
+        android:id="@+id/everything"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -138,7 +137,6 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/tweet_dots"
@@ -146,5 +144,12 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="12dp"
         android:layout_marginRight="5dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#404040"
+        android:layout_below="@id/everything"
+        android:layout_marginTop="10dp"/>
 
 </RelativeLayout>
