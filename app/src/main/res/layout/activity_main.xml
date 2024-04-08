@@ -94,5 +94,5 @@
             android:layout_weight="1"/>
 
     </LinearLayout>
-    
+
 </androidx.drawerlayout.widget.DrawerLayout>
