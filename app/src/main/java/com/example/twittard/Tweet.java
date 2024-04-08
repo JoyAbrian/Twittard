@@ -1,6 +1,11 @@
 package com.example.twittard;
 
-public class Tweet {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class Tweet implements Parcelable {
     private Account account;
     private String date;
     private String tweet;
@@ -20,6 +25,48 @@ public class Tweet {
         this.like = like;
         this.view = view;
     }
+
+    protected Tweet(Parcel in) {
+        date = in.readString();
+        tweet = in.readString();
+        if (in.readByte() == 0) {
+            image = null;
+        } else {
+            image = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            comment = null;
+        } else {
+            comment = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            repost = null;
+        } else {
+            repost = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            like = null;
+        } else {
+            like = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            view = null;
+        } else {
+            view = in.readInt();
+        }
+    }
+
+    public static final Creator<Tweet> CREATOR = new Creator<Tweet>() {
+        @Override
+        public Tweet createFromParcel(Parcel in) {
+            return new Tweet(in);
+        }
+
+        @Override
+        public Tweet[] newArray(int size) {
+            return new Tweet[size];
+        }
+    };
 
     public Account getAccount() {
         return account;
@@ -83,5 +130,46 @@ public class Tweet {
 
     public void setView(Integer view) {
         this.view = view;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeString(date);
+        dest.writeString(tweet);
+        if (image == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(image);
+        }
+        if (comment == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(comment);
+        }
+        if (repost == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(repost);
+        }
+        if (like == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(like);
+        }
+        if (view == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(view);
+        }
     }
 }
