@@ -21,4 +21,14 @@
         android:id="@+id/drawerList"
         android:title="Daftar"/>
 
+    <item
+        android:icon="@drawable/drawer_space"
+        android:id="@+id/drawerSpaces"
+        android:title="Spaces"/>
+
+    <item
+        android:icon="@drawable/drawer_monetization"
+        android:id="@+id/drawerMonetization"
+        android:title="Monetisasi"/>
+
 </menu>
