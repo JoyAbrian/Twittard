@@ -15,11 +15,27 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainer"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="16.3"/>
+            android:layout_weight="16.3">
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragmentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:backgroundTint="#00AEFF"
+                android:text="+"
+                android:textColor="@color/white"
+                android:layout_gravity="end|bottom"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"/>
+
+        </FrameLayout>
 
         <include
             layout="@layout/footer_main"
