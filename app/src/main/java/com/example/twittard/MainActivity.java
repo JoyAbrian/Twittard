@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Footer Items
         footerHome = findViewById(R.id.footerHome);
         footerSearch = findViewById(R.id.footerSearch);
         footerCommunity = findViewById(R.id.footerCommunity);
