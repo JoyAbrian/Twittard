@@ -7,6 +7,14 @@
     android:orientation="vertical">
 
     <include
-        layout="@layout/header_mail"/>
+        layout="@layout/header_mail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"/>
 
 </LinearLayout>
