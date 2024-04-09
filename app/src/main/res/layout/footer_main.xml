@@ -16,6 +16,7 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/footerHome"
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_weight="1"
@@ -23,6 +24,7 @@
             android:src="@drawable/footer_home"/>
 
         <ImageView
+            android:id="@+id/footerSearch"
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_weight="1"
@@ -30,6 +32,7 @@
             android:src="@drawable/footer_search"/>
 
         <ImageView
+            android:id="@+id/footerCommunity"
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_weight="1"
@@ -37,6 +40,7 @@
             android:src="@drawable/footer_community"/>
 
         <ImageView
+            android:id="@+id/footerNotification"
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_weight="1"
@@ -44,6 +48,7 @@
             android:src="@drawable/footer_notification"/>
 
         <ImageView
+            android:id="@+id/footerMail"
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_weight="1"
