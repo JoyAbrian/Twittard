@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         inactiveFooter();
         footerMail.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.footer_mail_active));
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragmentContainer, new SearchFragment())
+                .replace(R.id.fragmentContainer, new MailFragment())
                 .commit();
     }
 }
