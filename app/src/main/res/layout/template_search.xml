@@ -17,12 +17,14 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/searchType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Search Type"
                 android:textColor="#6C6C6C"/>
 
             <TextView
+                android:id="@+id/searchName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"
@@ -39,6 +41,7 @@
                 android:layout_marginTop="2dp">
 
                 <TextView
+                    android:id="@+id/searchPosts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
