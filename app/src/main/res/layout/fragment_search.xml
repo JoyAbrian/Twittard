@@ -29,7 +29,8 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-
+        <include
+            layout="@layout/template_search"/>
 
     </LinearLayout>
 
