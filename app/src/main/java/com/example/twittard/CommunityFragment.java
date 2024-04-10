@@ -25,22 +25,12 @@ public class CommunityFragment extends Fragment {
         communities.add(new Community(R.drawable.communityxfeedback, "X Communities Feedback", "33rb", ""));
         communities.add(new Community(R.drawable.communityapple, "Apple", "148rb", "Teknologi"));
         communities.add(new Community(R.drawable.communityartistonthechain, "Artists On The Chain", "111rb", "Seni"));
-        communities.add(new Community(, "Software Engineering", "25rb", "Perangkat Lunak"));
-        communities.add(new Community(, "Memes", "131rb", "Seru-Seruan"));
-        communities.add(new Community(, "Yankees Twitter", "14rb", "Bisbol"));
-        communities.add(new Community(, "Diablo IV", "17rb", "Game"));
-        communities.add(new Community(, "Dogs", "94rb", "Hewan"));
-        communities.add(new Community(, "DC", "21rb", "Komik"));
-        communities.add(new Community(, "", "", ""));
-        communities.add(new Community(, "", "", ""));
-        communities.add(new Community(, "", "", ""));
-        communities.add(new Community(, "", "", ""));
-        communities.add(new Community(, "", "", ""));
-        communities.add(new Community(, "", "", ""));
-        communities.add(new Community(, "", "", ""));
-        communities.add(new Community(, "", "", ""));
-        communities.add(new Community(, "", "", ""));
-        communities.add(new Community(, "", "", ""));
+        communities.add(new Community(R.drawable.communitysoftwareengineering, "Software Engineering", "25rb", "Perangkat Lunak"));
+        communities.add(new Community(R.drawable.communitymemes, "Memes", "131rb", "Seru-Seruan"));
+        communities.add(new Community(R.drawable.communityyankeestwitter, "Yankees Twitter", "14rb", "Bisbol"));
+        communities.add(new Community(R.drawable.communitydiabloiv, "Diablo IV", "17rb", "Game"));
+        communities.add(new Community(R.drawable.communitydogs, "Dogs", "94rb", "Hewan"));
+        communities.add(new Community(R.drawable.communitydc, "DC", "21rb", "Komik"));
         return communities;
     }
 }
