@@ -24,7 +24,7 @@
             android:id="@+id/communityName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="<community name>"
+            android:text="name"
             android:textColor="#D3D3D3"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -38,7 +38,7 @@
                 android:id="@+id/communityMembers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="<members>"
+                android:text="size"
                 android:textColor="#D3D3D3"
                 android:textSize="16sp"/>
 
@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
-            android:text="<type>"
+            android:text="type"
             android:textColor="#D3D3D3"
             android:textSize="16sp" />
 
