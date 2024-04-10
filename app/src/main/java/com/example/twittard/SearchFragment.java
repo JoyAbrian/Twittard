@@ -8,57 +8,35 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SearchFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class SearchFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    ArrayList<Search> searches;
     public SearchFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SearchFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static SearchFragment newInstance(String param1, String param2) {
-        SearchFragment fragment = new SearchFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        searches = generateDummySearches();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_search, container, false);
+    }
+
+    private static ArrayList<Search> generateDummySearches() {
+        ArrayList<Search> searches = new ArrayList<>();
+        searches.add(new Search("Sedang tren dalam topik Indonesia", "Innalillahi", "1.693"));
+        searches.add(new Search("Politik • Populer", "Ridwan Kamil", "1.238"));
+        searches.add(new Search("Sedang tren dalam topik Indonesia", "BEM UI", "15,1 rb"));
+        searches.add(new Search("Sedang tren dalam topik Indonesia", "Jawa", "15,4 rb"));
+        searches.add(new Search("Hiburan • Populer", "Cinta Laura", "1.738 rb"));
+        searches.add(new Search("Sedang tren dalam topik Indonesia", "Papua", "30,4 rb"));
+        searches.add(new Search("Sedang tren dalam topik Indonesia", "Apel Siaga 3", "2.030"));
+        searches.add(new Search("Sedang tren dalam topik Indonesia", "Labrak", "2.052"));
+        return searches;
     }
 }
