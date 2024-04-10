@@ -3,14 +3,12 @@ package com.example.twittard;
 public class Community {
     private Integer image;
     private String name;
-    private String size;
     private String members;
     private String type;
 
-    public Community(Integer image, String name, String size, String members, String type) {
+    public Community(Integer image, String name, String members, String type) {
         this.image = image;
         this.name = name;
-        this.size = size;
         this.members = members;
         this.type = type;
     }
@@ -29,14 +27,6 @@ public class Community {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
     }
 
     public String getMembers() {

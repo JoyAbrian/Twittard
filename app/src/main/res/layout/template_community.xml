@@ -10,7 +10,9 @@
         android:layout_height="75dp"
         android:src="@color/material_dynamic_neutral_variant40"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="10dp"/>
+        android:layout_marginVertical="10dp"
+        android:scaleType="centerCrop"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,7 +56,6 @@
             android:id="@+id/communityType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
             android:fontFamily="sans-serif-light"
             android:text="<type>"
             android:textColor="#D3D3D3"
