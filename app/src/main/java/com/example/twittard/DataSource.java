@@ -1,12 +1,15 @@
 package com.example.twittard;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class DataSource {
     public static ArrayList<Account> accounts = generateDummyAccounts();
     public ArrayList<Search> searches = generateDummySearches();
     public ArrayList<Community> communities = generateDummyCommunities();
     public ArrayList<Tweet> tweets = generateDummyTweets();
+
     private static ArrayList<Account> generateDummyAccounts() {
         ArrayList<Account> accounts = new ArrayList<>();
         accounts.add(new Account("Folkshitt", "@folkshittmedia", R.drawable.account_folkshit_pp, R.drawable.account_folkshit_banner, "Media & Berita", "November 2023", "0", "227.664"));
@@ -19,6 +22,9 @@ public class DataSource {
         tweets.add(new Tweet(accounts.get(0), "1 hari", "KENCENG BANGET TUH MOBIL", R.drawable.account_folkshit_post2, "352", "584", "11rb", "1,6jt"));
         tweets.add(new Tweet(accounts.get(0), "1 hari", "GEBER TEROS", R.drawable.account_folkshit_post3, "109", "68", "1,3rb", "143rb"));
         tweets.add(new Tweet(accounts.get(0), "2 hari", "DISELESAIKAN DEGAN TINJU", R.drawable.account_folkshit_post4, "1rb", "2,2rb", "23rb", "3,6jt"));
+        
+
+        Collections.shuffle(tweets);
         return tweets;
     }
 
