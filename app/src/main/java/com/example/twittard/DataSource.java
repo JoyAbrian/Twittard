@@ -14,6 +14,8 @@ public class DataSource {
         ArrayList<Account> accounts = new ArrayList<>();
         accounts.add(new Account("Folkshitt", "@folkshittmedia", R.drawable.account_folkshit_pp, R.drawable.account_folkshit_banner, "Media & Berita", "November 2023", "0", "227.664"));
         accounts.add(new Account("sosmed keras", "@sosmedkeras", R.drawable.account_sosmedkeras_pp, R.drawable.account_sosmedkeras_banner, "Media Personality", "September 2020", "6", "4.1M"));
+        accounts.add(new Account("Kaka", "@KAKA", R.drawable.account_kaka_pp, R.drawable.account_kaka_banner, "Atlit", "Juli 2009", "234", "29.1M"));
+        accounts.add(new Account("Elon Musk", "@elonmusk", R.drawable.account_elonmusk_pp, R.drawable.account_elonmusk_banner, "CEO", "Juni 2009", "573", "180.1M"));
         return accounts;
     }
 
@@ -25,6 +27,9 @@ public class DataSource {
         tweets.add(new Tweet(accounts.get(0), "2 hari", "DISELESAIKAN DEGAN TINJU", R.drawable.account_folkshit_post4, "1rb", "2,2rb", "23rb", "3,6jt"));
         tweets.add(new Tweet(accounts.get(1), "03 April", "Satu kata buat orang ini", R.drawable.account_sosmedkeras_post1, "6,6rb", "5,6rb", "43rb", "9,1jt"));
         tweets.add(new Tweet(accounts.get(1), "17 jam", "Lah kok", R.drawable.account_sosmedkeras_post2, "1,4rb", "3,6rb", "30rb", "2jt"));
+        tweets.add(new Tweet(accounts.get(2), "06 Maret", "122 años de gloria", R.drawable.account_kaka_post1, "875", "13rb", "116rb", "1,3jt"));
+        tweets.add(new Tweet(accounts.get(3), "1 hari", null, R.drawable.account_elonmusk_post1, "12rb", "47rb", "483rb", "59jt"));
+        tweets.add(new Tweet(accounts.get(3), "11 April", "X algorithm update coming soon with more bangers and less clickbait!", null, "13rb", "19rb", "203rb", "61jt"));
 
 
         Collections.shuffle(tweets);
