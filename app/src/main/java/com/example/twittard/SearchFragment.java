@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class SearchFragment extends Fragment {
-    ArrayList<Search> searches;
+    private ArrayList<Search> searches;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -22,7 +22,8 @@ public class SearchFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        searches = generateDummySearches();
+        DataSource dataSource = new DataSource();
+        searches = dataSource.searches;
     }
 
     @Override
@@ -45,18 +46,5 @@ public class SearchFragment extends Fragment {
         }
 
         return rootView;
-    }
-
-    private static ArrayList<Search> generateDummySearches() {
-        ArrayList<Search> searches = new ArrayList<>();
-        searches.add(new Search("Sedang tren dalam topik Indonesia", "Innalillahi", "1.693"));
-        searches.add(new Search("Politik • Populer", "Ridwan Kamil", "1.238"));
-        searches.add(new Search("Sedang tren dalam topik Indonesia", "BEM UI", "15,1 rb"));
-        searches.add(new Search("Sedang tren dalam topik Indonesia", "Jawa", "15,4 rb"));
-        searches.add(new Search("Hiburan • Populer", "Cinta Laura", "1.738 rb"));
-        searches.add(new Search("Sedang tren dalam topik Indonesia", "Papua", "30,4 rb"));
-        searches.add(new Search("Sedang tren dalam topik Indonesia", "Apel Siaga 3", "2.030"));
-        searches.add(new Search("Sedang tren dalam topik Indonesia", "Labrak", "2.052"));
-        return searches;
     }
 }

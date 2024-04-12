@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class CommunityFragment extends Fragment {
-    ArrayList<Community> communities;
+    private ArrayList<Community> communities;
 
     public CommunityFragment() {
         // Required empty public constructor
@@ -20,7 +20,8 @@ public class CommunityFragment extends Fragment {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        communities = generateDummyCommunities();
+        DataSource dataSource = new DataSource();
+        communities = dataSource.communities;
     }
 
     @Override

@@ -10,12 +10,12 @@ public class Tweet implements Parcelable {
     private String date;
     private String tweet;
     private Integer image;
-    private Integer comment;
-    private Integer repost;
-    private Integer like;
-    private Integer view;
+    private String comment;
+    private String repost;
+    private String like;
+    private String view;
 
-    public Tweet(Account account, String date, String tweet, Integer image, Integer comment, Integer repost, Integer like, Integer view) {
+    public Tweet(Account account, String date, String tweet, Integer image, String comment, String repost, String like, String view) {
         this.account = account;
         this.date = date;
         this.tweet = tweet;
@@ -34,26 +34,10 @@ public class Tweet implements Parcelable {
         } else {
             image = in.readInt();
         }
-        if (in.readByte() == 0) {
-            comment = null;
-        } else {
-            comment = in.readInt();
-        }
-        if (in.readByte() == 0) {
-            repost = null;
-        } else {
-            repost = in.readInt();
-        }
-        if (in.readByte() == 0) {
-            like = null;
-        } else {
-            like = in.readInt();
-        }
-        if (in.readByte() == 0) {
-            view = null;
-        } else {
-            view = in.readInt();
-        }
+        comment = in.readString();
+        repost = in.readString();
+        like = in.readString();
+        view = in.readString();
     }
 
     public static final Creator<Tweet> CREATOR = new Creator<Tweet>() {
@@ -100,35 +84,35 @@ public class Tweet implements Parcelable {
         this.image = image;
     }
 
-    public Integer getComment() {
+    public String getComment() {
         return comment;
     }
 
-    public void setComment(Integer comment) {
+    public void setComment(String comment) {
         this.comment = comment;
     }
 
-    public Integer getRepost() {
+    public String getRepost() {
         return repost;
     }
 
-    public void setRepost(Integer repost) {
+    public void setRepost(String repost) {
         this.repost = repost;
     }
 
-    public Integer getLike() {
+    public String getLike() {
         return like;
     }
 
-    public void setLike(Integer like) {
+    public void setLike(String like) {
         this.like = like;
     }
 
-    public Integer getView() {
+    public String getView() {
         return view;
     }
 
-    public void setView(Integer view) {
+    public void setView(String view) {
         this.view = view;
     }
 
@@ -147,29 +131,9 @@ public class Tweet implements Parcelable {
             dest.writeByte((byte) 1);
             dest.writeInt(image);
         }
-        if (comment == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeInt(comment);
-        }
-        if (repost == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeInt(repost);
-        }
-        if (like == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeInt(like);
-        }
-        if (view == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeInt(view);
-        }
+        dest.writeString(comment);
+        dest.writeString(repost);
+        dest.writeString(like);
+        dest.writeString(view);
     }
 }

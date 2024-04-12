@@ -5,17 +5,17 @@ public class Account {
     private String username;
     private Integer profilePhoto;
     private Integer profileBanner;
-    private String birthdate;
+    private String type;
     private String signDate;
     private String following;
     private String followers;
 
-    public Account(String fullname, String username, Integer profilePhoto, Integer profileBanner, String birthdate, String signDate, String following, String followers) {
+    public Account(String fullname, String username, Integer profilePhoto, Integer profileBanner, String type, String signDate, String following, String followers) {
         this.fullname = fullname;
         this.username = username;
         this.profilePhoto = profilePhoto;
         this.profileBanner = profileBanner;
-        this.birthdate = birthdate;
+        this.type = type;
         this.signDate = signDate;
         this.following = following;
         this.followers = followers;
@@ -54,11 +54,11 @@ public class Account {
     }
 
     public String getBirthdate() {
-        return birthdate;
+        return type;
     }
 
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthdate(String type) {
+        this.type = type;
     }
 
     public String getSignDate() {
