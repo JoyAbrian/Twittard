@@ -16,6 +16,7 @@ public class DataSource {
         accounts.add(new Account("sosmed keras", "@sosmedkeras", R.drawable.account_sosmedkeras_pp, R.drawable.account_sosmedkeras_banner, "Media Personality", "September 2020", "6", "4.1M"));
         accounts.add(new Account("Kaka", "@KAKA", R.drawable.account_kaka_pp, R.drawable.account_kaka_banner, "Atlit", "Juli 2009", "234", "29.1M"));
         accounts.add(new Account("Elon Musk", "@elonmusk", R.drawable.account_elonmusk_pp, R.drawable.account_elonmusk_banner, "CEO", "Juni 2009", "573", "180.1M"));
+        accounts.add(new Account("Dr. Bob Onder", "@BobOnderMO", R.drawable.account_bobonder_pp, R.drawable.account_bobonder_banner, "Politic", "Juli 2013", "2,444", "9,581"));
         return accounts;
     }
 
@@ -30,8 +31,7 @@ public class DataSource {
         tweets.add(new Tweet(accounts.get(2), "06 Maret", "122 años de gloria", R.drawable.account_kaka_post1, "875", "13rb", "116rb", "1,3jt"));
         tweets.add(new Tweet(accounts.get(3), "1 hari", null, R.drawable.account_elonmusk_post1, "12rb", "47rb", "483rb", "59jt"));
         tweets.add(new Tweet(accounts.get(3), "11 April", "X algorithm update coming soon with more bangers and less clickbait!", null, "13rb", "19rb", "203rb", "61jt"));
-
-
+        tweets.add(new Tweet(accounts.get(4), "9 jam", "A reminder for those who slept through 7th grade social studies: we have a Constitutional Republic, not a direct democracy.", null, "16", "14rb", "77", "2,4rb"));
         Collections.shuffle(tweets);
         return tweets;
     }
