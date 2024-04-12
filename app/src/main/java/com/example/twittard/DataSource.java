@@ -17,6 +17,8 @@ public class DataSource {
         accounts.add(new Account("Kaka", "@KAKA", R.drawable.account_kaka_pp, R.drawable.account_kaka_banner, "Atlit", "Juli 2009", "234", "29.1M"));
         accounts.add(new Account("Elon Musk", "@elonmusk", R.drawable.account_elonmusk_pp, R.drawable.account_elonmusk_banner, "CEO", "Juni 2009", "573", "180.1M"));
         accounts.add(new Account("Dr. Bob Onder", "@BobOnderMO", R.drawable.account_bobonder_pp, R.drawable.account_bobonder_banner, "Politic", "Juli 2013", "2,444", "9,581"));
+        accounts.add(new Account("Yia", "@lvusmuch", R.drawable.account_yia_pp, R.drawable.account_yia_banner, "She/her", "Juli 2019", "1,110", "1,521"));
+        accounts.add(new Account("Joy Abrian", "@stupidImpostor", R.drawable.profile_anonym, R.drawable.banner_anonym, "Attack Helicopter", "Oktober 2023", "1", "0"));
         return accounts;
     }
 
@@ -32,6 +34,9 @@ public class DataSource {
         tweets.add(new Tweet(accounts.get(3), "1 hari", null, R.drawable.account_elonmusk_post1, "12rb", "47rb", "483rb", "59jt"));
         tweets.add(new Tweet(accounts.get(3), "11 April", "X algorithm update coming soon with more bangers and less clickbait!", null, "13rb", "19rb", "203rb", "61jt"));
         tweets.add(new Tweet(accounts.get(4), "9 jam", "A reminder for those who slept through 7th grade social studies: we have a Constitutional Republic, not a direct democracy.", null, "16", "14rb", "77", "2,4rb"));
+        tweets.add(new Tweet(accounts.get(5), "1 jam", "diantara semua member gfriend siapa yah yang bakal nikah duluan", null, "7", "", "1", "222"));
+        tweets.add(new Tweet(accounts.get(5), "2 jam", "gfriend pas masih jaman sering manggung di acara musik sctv sama rcti, rumornya pernah berantem rebutan air di backstage sama member cherrybelle", R.drawable.account_yia_post1, "", "", "2", "144"));
+        tweets.add(new Tweet(accounts.get(5), "2 jam", "eh ini kalau moots ku risih liat aku bahas gfriend bub aja yah", null, "", "", "", "100"));
         Collections.shuffle(tweets);
         return tweets;
     }
