@@ -13,6 +13,7 @@ public class DataSource {
     private static ArrayList<Account> generateDummyAccounts() {
         ArrayList<Account> accounts = new ArrayList<>();
         accounts.add(new Account("Folkshitt", "@folkshittmedia", R.drawable.account_folkshit_pp, R.drawable.account_folkshit_banner, "Media & Berita", "November 2023", "0", "227.664"));
+        accounts.add(new Account("sosmed keras", "@sosmedkeras", R.drawable.account_sosmedkeras_pp, R.drawable.account_sosmedkeras_banner, "Media Personality", "September 2020", "6", "4.1M"));
         return accounts;
     }
 
@@ -22,7 +23,9 @@ public class DataSource {
         tweets.add(new Tweet(accounts.get(0), "1 hari", "KENCENG BANGET TUH MOBIL", R.drawable.account_folkshit_post2, "352", "584", "11rb", "1,6jt"));
         tweets.add(new Tweet(accounts.get(0), "1 hari", "GEBER TEROS", R.drawable.account_folkshit_post3, "109", "68", "1,3rb", "143rb"));
         tweets.add(new Tweet(accounts.get(0), "2 hari", "DISELESAIKAN DEGAN TINJU", R.drawable.account_folkshit_post4, "1rb", "2,2rb", "23rb", "3,6jt"));
-        
+        tweets.add(new Tweet(accounts.get(1), "03 April", "Satu kata buat orang ini", R.drawable.account_sosmedkeras_post1, "6,6rb", "5,6rb", "43rb", "9,1jt"));
+        tweets.add(new Tweet(accounts.get(1), "17 jam", "Lah kok", R.drawable.account_sosmedkeras_post2, "1,4rb", "3,6rb", "30rb", "2jt"));
+
 
         Collections.shuffle(tweets);
         return tweets;
