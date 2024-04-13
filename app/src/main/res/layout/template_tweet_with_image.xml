@@ -71,7 +71,8 @@
             <ImageView
                 android:id="@+id/tweetPicture"
                 android:layout_width="330dp"
-                android:layout_height="330dp"/>
+                android:layout_height="330dp"
+                android:scaleType="fitCenter"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

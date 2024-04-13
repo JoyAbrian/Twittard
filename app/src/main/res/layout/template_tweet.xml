@@ -13,6 +13,7 @@
         android:layout_marginLeft="10dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/accountPicture"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:src="@drawable/profile_anonym"/>
@@ -157,7 +158,7 @@
                         android:layout_height="12dp"
                         android:layout_gravity="top"
                         android:layout_marginLeft="1dp"
-                        android:text="hl"
+                        android:text="10"
                         android:textColor="#8C8C8C"
                         android:textSize="8sp" />
 
