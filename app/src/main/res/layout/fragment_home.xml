@@ -64,22 +64,10 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/parent"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="14"
-        android:orientation="vertical">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_gravity="bottom"
-            android:background="#6A6A6A"/>
-
-        <view class="androidx.appcompat.app.AlertController$RecycleListView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-    </LinearLayout>
+        android:layout_weight="14"/>
 
 </LinearLayout>

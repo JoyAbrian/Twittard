@@ -8,7 +8,7 @@ public class DataSource {
     public static ArrayList<Account> accounts = generateDummyAccounts();
     public ArrayList<Search> searches = generateDummySearches();
     public ArrayList<Community> communities = generateDummyCommunities();
-    public ArrayList<Tweet> tweets = generateDummyTweets();
+    public static ArrayList<Tweet> tweets = generateDummyTweets();
 
     private static ArrayList<Account> generateDummyAccounts() {
         ArrayList<Account> accounts = new ArrayList<>();

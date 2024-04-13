@@ -15,11 +15,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> {
     private final ArrayList<Tweet> tweets;
-    private final Tweet tweet;
 
-    public TweetAdapter(ArrayList<Tweet> tweets, Tweet tweet) {
+    public TweetAdapter(ArrayList<Tweet> tweets) {
         this.tweets = tweets;
-        this.tweet = tweet;
     }
 
     @NonNull
@@ -40,7 +38,23 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull TweetAdapter.ViewHolder holder, int position) {
-        holder.accountPicture.setImageResource(tweet.getAccount().getProfilePhoto());
+        Tweet tweet = tweets.get(position);
+
+        holder.accountPicture.setImageResource(0);
+        holder.accountFullname.setText("");
+        holder.accountUsername.setText("");
+        holder.tweetDate.setText("");
+        holder.tweetComments.setText("");
+        holder.tweetReposts.setText("");
+        holder.tweetLikes.setText("");
+        holder.tweetViews.setText("");
+        holder.tweetPicture.setImageDrawable(null);
+        holder.tweetText.setText("");
+
+        // Bind data to views based on the current tweet
+        if (holder.accountPicture != null && tweet.getAccount() != null && tweet.getAccount().getProfilePhoto() != null) {
+            holder.accountPicture.setImageResource(tweet.getAccount().getProfilePhoto());
+        }
         holder.accountFullname.setText(tweet.getAccount().getFullname());
         holder.accountUsername.setText(tweet.getAccount().getUsername());
         holder.tweetDate.setText(tweet.getDate());
@@ -50,12 +64,20 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         holder.tweetViews.setText(tweet.getView());
 
         if (tweet.getTweet() == null) {
-            holder.tweetPicture.setImageResource(tweet.getImage());
+            if (holder.tweetPicture != null) {
+                holder.tweetPicture.setImageResource(tweet.getImage());
+            }
         } else if (tweet.getImage() == null) {
-            holder.tweetText.setText(tweet.getTweet());
+            if (holder.tweetText != null) {
+                holder.tweetText.setText(tweet.getTweet());
+            }
         } else {
-            holder.tweetPicture.setImageResource(tweet.getImage());
-            holder.tweetText.setText(tweet.getTweet());
+            if (holder.tweetPicture != null) {
+                holder.tweetPicture.setImageResource(tweet.getImage());
+            }
+            if (holder.tweetText != null) {
+                holder.tweetText.setText(tweet.getTweet());
+            }
         }
     }
 
@@ -87,13 +109,11 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             tweetLikes = itemView.findViewById(R.id.tweetLikes);
             tweetViews = itemView.findViewById(R.id.tweetViews);
 
-            if (tweet.getTweet() == null) {
+            if (itemView.findViewById(R.id.tweetPicture) != null) {
                 tweetPicture = itemView.findViewById(R.id.tweetPicture);
-            } else if (tweet.getImage() == null) {
+            }
+            if (itemView.findViewById(R.id.tweetText) != null) {
                 tweetText = itemView.findViewById(R.id.tweetText);
-            } else {
-                tweetText = itemView.findViewById(R.id.tweetText);
-                tweetPicture = itemView.findViewById(R.id.tweetPicture);
             }
         }
     }
