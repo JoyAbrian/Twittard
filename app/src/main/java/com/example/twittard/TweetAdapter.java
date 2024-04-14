@@ -30,18 +30,6 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull TweetAdapter.ViewHolder holder, int position) {
         Tweet tweet = tweets.get(position);
-
-        holder.accountPicture.setImageResource(0);
-        holder.accountFullname.setText("");
-        holder.accountUsername.setText("");
-        holder.tweetDate.setText("");
-        holder.tweetComments.setText("");
-        holder.tweetReposts.setText("");
-        holder.tweetLikes.setText("");
-        holder.tweetViews.setText("");
-        holder.tweetPicture.setImageDrawable(null);
-        holder.tweetText.setText("");
-
         holder.accountPicture.setImageResource(tweet.getAccount().getProfilePhoto());
         holder.accountFullname.setText(tweet.getAccount().getFullname());
         holder.accountUsername.setText(tweet.getAccount().getUsername());
