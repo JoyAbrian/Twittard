@@ -25,7 +25,7 @@
             android:layout_marginLeft="8dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
@@ -197,9 +197,10 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/tweet_dots"
+        android:id="@+id/toggleDelete"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@drawable/tweet_delete"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="12dp"

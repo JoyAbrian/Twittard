@@ -57,6 +57,12 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             intent.putExtra(ProfileActivity.EXTRA_ACCOUNT, tweet.getAccount());
             holder.itemView.getContext().startActivity(intent);
         });
+
+        holder.toggleDelete.setOnClickListener(v -> {
+            tweets.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, getItemCount());
+        });
     }
 
     @Override
@@ -75,6 +81,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         private final TextView tweetViews;
         private final ImageView tweetPicture;
         private final TextView tweetText;
+        private final ImageView toggleDelete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -88,6 +95,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             tweetViews = itemView.findViewById(R.id.tweetViews);
             tweetPicture = itemView.findViewById(R.id.tweetPicture);
             tweetText = itemView.findViewById(R.id.tweetText);
+            toggleDelete = itemView.findViewById(R.id.toggleDelete);
         }
     }
 }
