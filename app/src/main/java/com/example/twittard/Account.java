@@ -1,6 +1,11 @@
 package com.example.twittard;
 
-public class Account {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class Account implements Parcelable {
     private String fullname;
     private String username;
     private Integer profilePhoto;
@@ -20,6 +25,37 @@ public class Account {
         this.following = following;
         this.followers = followers;
     }
+
+    protected Account(Parcel in) {
+        fullname = in.readString();
+        username = in.readString();
+        if (in.readByte() == 0) {
+            profilePhoto = null;
+        } else {
+            profilePhoto = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            profileBanner = null;
+        } else {
+            profileBanner = in.readInt();
+        }
+        type = in.readString();
+        signDate = in.readString();
+        following = in.readString();
+        followers = in.readString();
+    }
+
+    public static final Creator<Account> CREATOR = new Creator<Account>() {
+        @Override
+        public Account createFromParcel(Parcel in) {
+            return new Account(in);
+        }
+
+        @Override
+        public Account[] newArray(int size) {
+            return new Account[size];
+        }
+    };
 
     public String getFullname() {
         return fullname;
@@ -83,5 +119,32 @@ public class Account {
 
     public void setFollowers(String followers) {
         this.followers = followers;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeString(fullname);
+        dest.writeString(username);
+        if (profilePhoto == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(profilePhoto);
+        }
+        if (profileBanner == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(profileBanner);
+        }
+        dest.writeString(type);
+        dest.writeString(signDate);
+        dest.writeString(following);
+        dest.writeString(followers);
     }
 }

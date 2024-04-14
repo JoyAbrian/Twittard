@@ -1,5 +1,6 @@
 package com.example.twittard;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,8 +53,10 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         }
 
         holder.accountPicture.setOnClickListener(v -> {
-
-        }
+            Intent intent = new Intent(holder.itemView.getContext(), ProfileActivity.class);
+            intent.putExtra(ProfileActivity.EXTRA_ACCOUNT, tweet.getAccount());
+            holder.itemView.getContext().startActivity(intent);
+        });
     }
 
     @Override

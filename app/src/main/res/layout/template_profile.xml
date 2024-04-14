@@ -12,6 +12,13 @@
         android:src="@drawable/banner_anonym"
         android:scaleType="fitXY" />
 
+    <ImageView
+        android:id="@+id/toggleBack"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/profile_back"
+        app:tint="@color/black" />
+
     <LinearLayout
         android:id="@+id/parents"
         android:layout_width="match_parent"
