@@ -167,6 +167,7 @@
         android:layout_marginLeft="23dp"/>
 
     <LinearLayout
+        android:id="@+id/parent2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -251,5 +252,12 @@
         </RelativeLayout>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tweetList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/parent2"
+        android:orientation="vertical"/>
 
 </RelativeLayout>
