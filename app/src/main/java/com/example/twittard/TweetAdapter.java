@@ -23,17 +23,8 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
     @NonNull
     @Override
     public TweetAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Tweet tweet = tweets.get(viewType);
-        View itemView;
-
-        if (tweet.getTweet() == null) {
-            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.template_tweet, parent, false);
-        } else if (tweet.getImage() == null)  {
-            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.template_tweet_only_image, parent, false);
-        } else  {
-            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.template_tweet_with_image, parent, false);
-        }
-        return new ViewHolder(itemView, tweet);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.template_tweet, parent, false);
+        return new ViewHolder(itemView);
     }
 
     @Override
@@ -51,10 +42,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         holder.tweetPicture.setImageDrawable(null);
         holder.tweetText.setText("");
 
-        // Bind data to views based on the current tweet
-        if (holder.accountPicture != null && tweet.getAccount() != null && tweet.getAccount().getProfilePhoto() != null) {
-            holder.accountPicture.setImageResource(tweet.getAccount().getProfilePhoto());
-        }
+        holder.accountPicture.setImageResource(tweet.getAccount().getProfilePhoto());
         holder.accountFullname.setText(tweet.getAccount().getFullname());
         holder.accountUsername.setText(tweet.getAccount().getUsername());
         holder.tweetDate.setText(tweet.getDate());
@@ -64,20 +52,14 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         holder.tweetViews.setText(tweet.getView());
 
         if (tweet.getTweet() == null) {
-            if (holder.tweetPicture != null) {
-                holder.tweetPicture.setImageResource(tweet.getImage());
-            }
+            holder.tweetText.setVisibility(View.GONE);
+            holder.tweetPicture.setImageResource(tweet.getImage());
         } else if (tweet.getImage() == null) {
-            if (holder.tweetText != null) {
-                holder.tweetText.setText(tweet.getTweet());
-            }
+            holder.tweetText.setText(tweet.getTweet());
+            holder.tweetPicture.setVisibility(View.GONE);
         } else {
-            if (holder.tweetPicture != null) {
-                holder.tweetPicture.setImageResource(tweet.getImage());
-            }
-            if (holder.tweetText != null) {
-                holder.tweetText.setText(tweet.getTweet());
-            }
+            holder.tweetText.setText(tweet.getTweet());
+            holder.tweetPicture.setImageResource(tweet.getImage());
         }
     }
 
@@ -95,10 +77,10 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         private final TextView tweetReposts;
         private final TextView tweetLikes;
         private final TextView tweetViews;
-        private ImageView tweetPicture = null;
-        private TextView tweetText = null;
+        private final ImageView tweetPicture;
+        private final TextView tweetText;
 
-        public ViewHolder(@NonNull View itemView, Tweet tweet) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             accountPicture = itemView.findViewById(R.id.accountPicture);
             accountFullname = itemView.findViewById(R.id.accountFullname);
@@ -108,13 +90,8 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             tweetReposts = itemView.findViewById(R.id.tweetReposts);
             tweetLikes = itemView.findViewById(R.id.tweetLikes);
             tweetViews = itemView.findViewById(R.id.tweetViews);
-
-            if (itemView.findViewById(R.id.tweetPicture) != null) {
-                tweetPicture = itemView.findViewById(R.id.tweetPicture);
-            }
-            if (itemView.findViewById(R.id.tweetText) != null) {
-                tweetText = itemView.findViewById(R.id.tweetText);
-            }
+            tweetPicture = itemView.findViewById(R.id.tweetPicture);
+            tweetText = itemView.findViewById(R.id.tweetText);
         }
     }
 }
