@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -49,6 +50,10 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             holder.tweetText.setText(tweet.getTweet());
             holder.tweetPicture.setImageResource(tweet.getImage());
         }
+
+        holder.accountPicture.setOnClickListener(v -> {
+
+        }
     }
 
     @Override
@@ -56,7 +61,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         return tweets.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         private final CircleImageView accountPicture;
         private final TextView accountFullname;
         private final TextView accountUsername;
