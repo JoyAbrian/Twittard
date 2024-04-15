@@ -129,6 +129,14 @@ public class Tweet implements Parcelable {
         this.view = view;
     }
 
+    public Uri getUriImage() {
+        return uriImage;
+    }
+
+    public void setUriImage(Uri uriImage) {
+        this.uriImage = uriImage;
+    }
+
     @Override
     public int describeContents() {
         return 0;
