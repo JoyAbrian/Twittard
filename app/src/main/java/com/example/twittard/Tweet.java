@@ -1,5 +1,6 @@
 package com.example.twittard;
 
+import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -14,12 +15,24 @@ public class Tweet implements Parcelable {
     private String repost;
     private String like;
     private String view;
+    private Uri uriImage;
 
     public Tweet(Account account, String date, String tweet, Integer image, String comment, String repost, String like, String view) {
         this.account = account;
         this.date = date;
         this.tweet = tweet;
         this.image = image;
+        this.comment = comment;
+        this.repost = repost;
+        this.like = like;
+        this.view = view;
+    }
+
+    public Tweet(Account account, String date, String tweet, Uri uriImage, String comment, String repost, String like, String view) {
+        this.account = account;
+        this.date = date;
+        this.tweet = tweet;
+        this.uriImage = uriImage;
         this.comment = comment;
         this.repost = repost;
         this.like = like;

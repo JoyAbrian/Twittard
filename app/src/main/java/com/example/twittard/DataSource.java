@@ -32,11 +32,11 @@ public class DataSource {
         tweets.add(new Tweet(accounts.get(1), "17 jam", "Lah kok", R.drawable.account_sosmedkeras_post2, "1,4rb", "3,6rb", "30rb", "2jt"));
         tweets.add(new Tweet(accounts.get(0), "2 hari", "DISELESAIKAN DEGAN TINJU", R.drawable.account_folkshit_post4, "1rb", "2,2rb", "23rb", "3,6jt"));
         tweets.add(new Tweet(accounts.get(5), "2 jam", "gfriend pas masih jaman sering manggung di acara musik sctv sama rcti, rumornya pernah berantem rebutan air di backstage sama member cherrybelle", R.drawable.account_yia_post1, "", "", "2", "144"));
-        tweets.add(new Tweet(accounts.get(4), "9 jam", "A reminder for those who slept through 7th grade social studies: we have a Constitutional Republic, not a direct democracy.", null, "16", "14rb", "77", "2,4rb"));
-        tweets.add(new Tweet(accounts.get(5), "1 jam", "diantara semua member gfriend siapa yah yang bakal nikah duluan", null, "7", "", "1", "222"));
+        tweets.add(new Tweet(accounts.get(4), "9 jam", "A reminder for those who slept through 7th grade social studies: we have a Constitutional Republic, not a direct democracy.", 1, "16", "14rb", "77", "2,4rb"));
+        tweets.add(new Tweet(accounts.get(5), "1 jam", "diantara semua member gfriend siapa yah yang bakal nikah duluan", 1, "7", "", "1", "222"));
         tweets.add(new Tweet(accounts.get(0), "2 jam", "ASTAGA", R.drawable.account_folkshit_post1, "91", "52", "358", "32rb"));
-        tweets.add(new Tweet(accounts.get(5), "2 jam", "eh ini kalau moots ku risih liat aku bahas gfriend bub aja yah", null, "", "", "", "100"));
-        tweets.add(new Tweet(accounts.get(3), "11 April", "X algorithm update coming soon with more bangers and less clickbait!", null, "13rb", "19rb", "203rb", "61jt"));
+        tweets.add(new Tweet(accounts.get(5), "2 jam", "eh ini kalau moots ku risih liat aku bahas gfriend bub aja yah", 1, "", "", "", "100"));
+        tweets.add(new Tweet(accounts.get(3), "11 April", "X algorithm update coming soon with more bangers and less clickbait!", 1, "13rb", "19rb", "203rb", "61jt"));
         return tweets;
     }
 

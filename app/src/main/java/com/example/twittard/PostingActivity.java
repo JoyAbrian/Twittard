@@ -24,6 +24,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -33,7 +34,7 @@ public class PostingActivity extends AppCompatActivity {
     private EditText inputTweet;
     private ImageView imagePreview;
     private ImageView inputImage;
-//    private Uri selectedImageUri;
+    private Uri selectedImageUri;
 //    private Integer selectedImageResourceId;
 
     @Override
@@ -51,35 +52,25 @@ public class PostingActivity extends AppCompatActivity {
             finish();
         });
 
-//        ActivityResultLauncher<Intent> launcherIntentGallery = registerForActivityResult(
-//                new ActivityResultContracts.StartActivityForResult(),
-//                new ActivityResultCallback<ActivityResult>() {
-//                    @Override
-//                    public void onActivityResult(ActivityResult result) {
-//                        if (result.getResultCode() == Activity.RESULT_OK) {
-//                            Intent data = result.getData();
-//                            if (data != null) {
-//                                selectedImageUri = data.getData();
-//                                try {
-//                                    InputStream inputStream = getContentResolver().openInputStream(selectedImageUri);
-//                                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-//                                    imagePreview.setImageBitmap(bitmap);
-//                                    inputStream.close();
-//                                    selectedImageResourceId = getResourceIdFromUri(selectedImageUri);
-//                                } catch (IOException e) {
-//                                    e.printStackTrace();
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//        );
+        ActivityResultLauncher<Intent> launcherIntentGallery = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(), result -> {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Intent data = result.getData();
+                        if (data != null) {
+                            selectedImageUri = data.getData();
+                            if (selectedImageUri != null) {
+                                imagePreview.setImageURI(selectedImageUri);
+                            }
+                        }
+                    }
+                }
+        );
 
-//        inputImage.setOnClickListener(v -> {
-//            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-//            intent.setType("image/*");
-//            launcherIntentGallery.launch(Intent.createChooser(intent, "Choose a picture"));
-//        });
+        inputImage.setOnClickListener(v -> {
+            Intent openGallery = new Intent(Intent.ACTION_PICK);
+            openGallery.setType("image/*");
+            launcherIntentGallery.launch(openGallery);
+        });
 
         inputTweet.addTextChangedListener(new TextWatcher() {
             @Override
@@ -103,7 +94,7 @@ public class PostingActivity extends AppCompatActivity {
             togglePost.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#00B2CA")));
             togglePost.setHintTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
             togglePost.setOnClickListener(v -> {
-                DataSource.tweets.add(new Tweet(DataSource.accounts.get(6), "0m", tweet, null, "", "", "", ""));
+                DataSource.tweets.add(new Tweet(DataSource.accounts.get(6), "0m", tweet, 1, "", "", "", ""));
             });
         }
     }
@@ -115,17 +106,19 @@ public class PostingActivity extends AppCompatActivity {
     }
 
     private void updateTogglePostButton() {
-        String tweet = inputTweet.getText().toString().trim();
-        if (!tweet.isEmpty()) {
+        String tweet = inputTweet.getText().toString();
+        if (!tweet.isEmpty() || selectedImageUri != null) {
             togglePost.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#00B2CA")));
             togglePost.setHintTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF"))); // Set hint text color
             togglePost.setOnClickListener(v -> {
-                Tweet newTweet = new Tweet(DataSource.accounts.get(6), "0m", tweet, null, "", "", "", "");
-                DataSource.tweets.add(0, newTweet);
-                Intent intent = new Intent(PostingActivity.this, MainActivity.class);
-                startActivity(intent);
+                if (selectedImageUri == null) {
+                    Tweet newTweet = new Tweet(DataSource.accounts.get(6), "0m", tweet, 1, "", "", "", "");
+                    DataSource.tweets.add(0, newTweet);
+                    Intent intent = new Intent(PostingActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+                togglePost.setEnabled(true);
             });
-            togglePost.setEnabled(true);
         } else {
             togglePost.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2A00B2CA")));
             togglePost.setHintTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF"))); // Set hint text color
