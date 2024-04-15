@@ -2,10 +2,14 @@ package com.example.twittard;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -77,11 +81,29 @@ public class PostingActivity extends AppCompatActivity {
             launcherIntentGallery.launch(Intent.createChooser(intent, "Choose a picture"));
         });
 
-        if ((!inputTweet.getText().toString().trim().isEmpty() || selectedImageUri != null)) {
-            String tweet = !inputTweet.getText().toString().trim().isEmpty() ? inputTweet.getText().toString().trim() : null;
-            Integer imageResourceId = selectedImageUri != null ? getResourceIdFromUri(selectedImageUri) : null;
+        inputTweet.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // No action needed
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                updateTogglePostButton();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // No action needed
+            }
+        });
+
+        if (!inputTweet.getText().toString().isEmpty()) {
+            String tweet = inputTweet.getText().toString();
+            togglePost.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#00B2CA")));
+            togglePost.setHintTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
             togglePost.setOnClickListener(v -> {
-                DataSource.tweets.add(new Tweet(DataSource.accounts.get(6), "0m", tweet, imageResourceId, "", "", "", ""));
+                DataSource.tweets.add(new Tweet(DataSource.accounts.get(6), "0m", tweet, null, "", "", "", ""));
             });
         }
     }
@@ -90,5 +112,22 @@ public class PostingActivity extends AppCompatActivity {
         String uriString = uri.toString();
         String resourceName = uriString.substring(uriString.lastIndexOf('/') + 1);
         return getResources().getIdentifier(resourceName, "drawable", getPackageName());
+    }
+
+    private void updateTogglePostButton() {
+        String tweet = inputTweet.getText().toString().trim();
+        if (!tweet.isEmpty()) {
+            togglePost.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#00B2CA")));
+            togglePost.setHintTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF"))); // Set hint text color
+            togglePost.setOnClickListener(v -> {
+                DataSource.tweets.add(new Tweet(DataSource.accounts.get(6), "0m", tweet, null, "", "", "", ""));
+            });
+            togglePost.setEnabled(true);
+        } else {
+            togglePost.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2A00B2CA")));
+            togglePost.setHintTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF"))); // Set hint text color
+            togglePost.setOnClickListener(null);
+            togglePost.setEnabled(false);
+        }
     }
 }
