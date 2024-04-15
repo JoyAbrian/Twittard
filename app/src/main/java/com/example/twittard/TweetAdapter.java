@@ -43,15 +43,17 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
 
         if (tweet.getTweet() == null) {
             holder.tweetText.setVisibility(View.GONE);
-            holder.tweetPicture.setImageResource(tweet.getImage());
-            holder.tweetImage.setImageURI(tweet.getUriImage());
-        } else if (tweet.getImage() == 1 && tweet.getUriImage() == null) {
-            holder.tweetText.setText(tweet.getTweet());
-            holder.tweetPicture.setVisibility(View.GONE);
-            holder.tweetImage.setVisibility(View.GONE);
         } else {
             holder.tweetText.setText(tweet.getTweet());
+        }
+
+        if (tweet.getUriImage() == null) {
+            holder.tweetImage.setVisibility(View.GONE);
+            holder.tweetPicture.setVisibility(View.VISIBLE);
             holder.tweetPicture.setImageResource(tweet.getImage());
+        } else {
+            holder.tweetPicture.setVisibility(View.GONE);
+            holder.tweetImage.setVisibility(View.VISIBLE);
             holder.tweetImage.setImageURI(tweet.getUriImage());
         }
 

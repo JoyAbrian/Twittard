@@ -88,47 +88,20 @@ public class PostingActivity extends AppCompatActivity {
                 // No action needed
             }
         });
-
-        if (!inputTweet.getText().toString().isEmpty()) {
-            String tweet = inputTweet.getText().toString();
-            togglePost.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#00B2CA")));
-            togglePost.setHintTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
-            togglePost.setOnClickListener(v -> {
-                DataSource.tweets.add(new Tweet(DataSource.accounts.get(6), "0m", tweet, 1, "", "", "", ""));
-            });
-        }
-    }
-
-    private int getResourceIdFromUri(Uri uri) {
-        String uriString = uri.toString();
-        String resourceName = uriString.substring(uriString.lastIndexOf('/') + 1);
-        return getResources().getIdentifier(resourceName, "drawable", getPackageName());
     }
 
     private void updateTogglePostButton() {
         String tweet = inputTweet.getText().toString();
-        if (!tweet.isEmpty() || imagePreview.getDrawable() != null) {
+        if (!tweet.isEmpty() || selectedImageUri != null) {
             togglePost.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#00B2CA")));
             togglePost.setHintTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF"))); // Set hint text color
             togglePost.setOnClickListener(v -> {
-                if (selectedImageUri == null) {
-                    Tweet newTweet = new Tweet(DataSource.accounts.get(6), "0m", tweet, 1, "", "", "", "");
-                    DataSource.tweets.add(0, newTweet);
-                    Intent intent = new Intent(PostingActivity.this, MainActivity.class);
-                    startActivity(intent);
-                } else if (tweet.isEmpty()) {
-                    Tweet newTweet = new Tweet(DataSource.accounts.get(6), "0m", null, selectedImageUri, "", "", "", "");
-                    DataSource.tweets.add(0, newTweet);
-                    Intent intent = new Intent(PostingActivity.this, MainActivity.class);
-                    startActivity(intent);
-                } else {
-                    Tweet newTweet = new Tweet(DataSource.accounts.get(6), "0m", tweet, selectedImageUri, "", "", "", "");
-                    DataSource.tweets.add(0, newTweet);
-                    Intent intent = new Intent(PostingActivity.this, MainActivity.class);
-                    startActivity(intent);
-                }
-                togglePost.setEnabled(true);
+                Tweet newTweet = new Tweet(DataSource.accounts.get(6), "0m", tweet, selectedImageUri, "", "", "", "");
+                DataSource.tweets.add(0, newTweet);
+                Intent intent = new Intent(PostingActivity.this, MainActivity.class);
+                startActivity(intent);
             });
+            togglePost.setEnabled(true);
         } else {
             togglePost.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2A00B2CA")));
             togglePost.setHintTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF"))); // Set hint text color
