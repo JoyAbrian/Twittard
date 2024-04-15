@@ -28,7 +28,7 @@
             android:layout_width="110dp"
             android:layout_height="40dp"
             android:text="Posting"
-            android:textColor="#59FFFFFF"
+            android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
             android:backgroundTint="#2A00B2CA"
