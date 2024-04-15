@@ -26,6 +26,7 @@
                 android:layout_height="match_parent"/>
 
             <Button
+                android:id="@+id/togglePost"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:backgroundTint="#00AEFF"
