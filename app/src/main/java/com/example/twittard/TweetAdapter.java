@@ -44,12 +44,15 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         if (tweet.getTweet() == null) {
             holder.tweetText.setVisibility(View.GONE);
             holder.tweetPicture.setImageResource(tweet.getImage());
-        } else if (tweet.getImage() == 1) {
+            holder.tweetImage.setImageURI(tweet.getUriImage());
+        } else if (tweet.getImage() == 1 && tweet.getUriImage() == null) {
             holder.tweetText.setText(tweet.getTweet());
             holder.tweetPicture.setVisibility(View.GONE);
+            holder.tweetImage.setVisibility(View.GONE);
         } else {
             holder.tweetText.setText(tweet.getTweet());
             holder.tweetPicture.setImageResource(tweet.getImage());
+            holder.tweetImage.setImageURI(tweet.getUriImage());
         }
 
         holder.accountPicture.setOnClickListener(v -> {
@@ -80,6 +83,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         private final TextView tweetLikes;
         private final TextView tweetViews;
         private final ImageView tweetPicture;
+        private final ImageView tweetImage;
         private final TextView tweetText;
         private final ImageView toggleDelete;
 
@@ -94,6 +98,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             tweetLikes = itemView.findViewById(R.id.tweetLikes);
             tweetViews = itemView.findViewById(R.id.tweetViews);
             tweetPicture = itemView.findViewById(R.id.tweetPicture);
+            tweetImage = itemView.findViewById(R.id.tweetImage);
             tweetText = itemView.findViewById(R.id.tweetText);
             toggleDelete = itemView.findViewById(R.id.toggleDelete);
         }
