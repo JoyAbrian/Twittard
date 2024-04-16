@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileActivity extends AppCompatActivity {
-
     public static final String EXTRA_ACCOUNT = "BLABLABLA";
     private Account account;
 
