@@ -20,7 +20,7 @@ public class DataSource {
         accounts.add(new Account("Yia", "@lvusmuch", R.drawable.account_yia_pp, R.drawable.account_yia_banner, "She/her", "Juli 2019", "1,110", "1,521"));
         accounts.add(new Account("Joy Abrian", "@stupidImpostor", R.drawable.profile_anonym, R.drawable.banner_anonym, "Attack Helicopter", "Oktober 2023", "1", "0"));
         accounts.add(new Account("PENGEN JADI PRESIDEN", "@ahlipsikis", R.drawable.account_unexpected_pp, R.drawable.account_unexpected_banner, "Berita", "Juni 2019", "16", "12.5rb"));
-        accounts.add(new Account("", "", , , "", "", "", ""));
+        accounts.add(new Account("Kegoblogan.Unfaedah", "@kegblgnunfaedh", R.drawable.account_gblk_pp, R.drawable.account_gblk_banner, "Hiburan & Rekreasi", "September 2019", "20", "10.3jt"));
         return accounts;
     }
 
@@ -42,7 +42,10 @@ public class DataSource {
         tweets.add(new Tweet(accounts.get(7), "12 jam", "Diduga dipicu karena salah paham antara anggota TNI AL dan Anggota brimob. Semoga selalu damai", R.drawable.account_unexpected_post1, "", "", "3", "7,6rb", null));
         tweets.add(new Tweet(accounts.get(7), "14 April", "Serangan Iran ke Israel sebagai bentuk pembelaan diri atas upaya negara zionis yang ingin memperluas eskalasi perang di Timur Tengah. serangan itu sebagai balasan atas tragedi serangan konsulat jenderal di Syiria yang menewaskan 7 anggota korps garda revolusi Iran.", R.drawable.account_unexpected_post2, "1", "1", "7", "11rb", null));
         tweets.add(new Tweet(accounts.get(7), "12 April", "Penyerangan terjadi pada saat jenazah Danramil 1703 - 04 Aradide Letda Inf. Oktovianus Sogalrey tiba di Makodim 1703/Deiyai", R.drawable.account_unexpected_post3, "6", "6", "54", "23rb", null));
-        tweets.add(new Tweet(accounts.get(), "", "", , "", "", "", "", null));
+        tweets.add(new Tweet(accounts.get(8), "11 jam", null, R.drawable.account_gblk_post1, "62", "302", "2,2rb", "96rb", null));
+        tweets.add(new Tweet(accounts.get(8), "11 jam", null, R.drawable.account_gblk_post2, "251", "621", "7,1rb", "335rb", null));
+        tweets.add(new Tweet(accounts.get(8), "11 jam", null, R.drawable.account_gblk_post3, "274", "1,7rb", "10rb", "431rb", null));
+        tweets.add(new Tweet(accounts.get(8), "12 jam", null, R.drawable.account_gblk_post4, "217", "714", "8,9rb", "506rb", null));
         Collections.shuffle(tweets);
         return tweets;
     }
