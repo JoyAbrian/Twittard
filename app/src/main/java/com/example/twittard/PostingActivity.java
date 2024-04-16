@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -35,7 +36,8 @@ public class PostingActivity extends AppCompatActivity {
     private ImageView imagePreview;
     private ImageView inputImage;
     private Uri selectedImageUri;
-//    private Integer selectedImageResourceId;
+    private boolean hasTweet;
+    private boolean hasImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,7 @@ public class PostingActivity extends AppCompatActivity {
                             selectedImageUri = data.getData();
                             if (selectedImageUri != null) {
                                 imagePreview.setImageURI(selectedImageUri);
+                                hasImage = true;
                             }
                         }
                     }
@@ -92,9 +95,11 @@ public class PostingActivity extends AppCompatActivity {
 
     private void updateTogglePostButton() {
         String tweet = inputTweet.getText().toString();
-        if (!tweet.isEmpty() || selectedImageUri != null) {
+        hasTweet = !tweet.isEmpty();
+
+        if (hasTweet || hasImage) {
             togglePost.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#00B2CA")));
-            togglePost.setHintTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF"))); // Set hint text color
+            togglePost.setHintTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
             togglePost.setOnClickListener(v -> {
                 Tweet newTweet = new Tweet(DataSource.accounts.get(6), "0m", tweet, 1, "", "", "", "", selectedImageUri);
                 DataSource.tweets.add(0, newTweet);
@@ -104,7 +109,7 @@ public class PostingActivity extends AppCompatActivity {
             togglePost.setEnabled(true);
         } else {
             togglePost.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2A00B2CA")));
-            togglePost.setHintTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF"))); // Set hint text color
+            togglePost.setHintTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF")));
             togglePost.setOnClickListener(null);
             togglePost.setEnabled(false);
         }
