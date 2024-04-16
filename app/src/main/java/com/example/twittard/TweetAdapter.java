@@ -44,6 +44,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         if (tweet.getTweet() == null) {
             holder.tweetText.setVisibility(View.GONE);
         } else {
+            holder.tweetText.setVisibility(View.VISIBLE);
             holder.tweetText.setText(tweet.getTweet());
         }
 
