@@ -74,13 +74,13 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/tweetPicture"
+                    android:id="@+id/tweetDrawablePicture"
                     android:layout_width="330dp"
                     android:layout_height="330dp"
                     android:scaleType="fitCenter"/>
 
                 <ImageView
-                    android:id="@+id/tweetImage"
+                    android:id="@+id/tweetUriImage"
                     android:layout_width="330dp"
                     android:layout_height="330dp"
                     android:scaleType="fitCenter"/>

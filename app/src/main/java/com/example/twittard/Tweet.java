@@ -17,7 +17,7 @@ public class Tweet implements Parcelable {
     private String view;
     private Uri uriImage;
 
-    public Tweet(Account account, String date, String tweet, Integer image, String comment, String repost, String like, String view) {
+    public Tweet(Account account, String date, String tweet, Integer image, String comment, String repost, String like, String view, Uri uriImage) {
         this.account = account;
         this.date = date;
         this.tweet = tweet;
@@ -26,20 +26,11 @@ public class Tweet implements Parcelable {
         this.repost = repost;
         this.like = like;
         this.view = view;
-    }
-
-    public Tweet(Account account, String date, String tweet, Uri uriImage, String comment, String repost, String like, String view) {
-        this.account = account;
-        this.date = date;
-        this.tweet = tweet;
         this.uriImage = uriImage;
-        this.comment = comment;
-        this.repost = repost;
-        this.like = like;
-        this.view = view;
     }
 
     protected Tweet(Parcel in) {
+        account = in.readParcelable(Account.class.getClassLoader());
         date = in.readString();
         tweet = in.readString();
         if (in.readByte() == 0) {
@@ -51,6 +42,7 @@ public class Tweet implements Parcelable {
         repost = in.readString();
         like = in.readString();
         view = in.readString();
+        uriImage = in.readParcelable(Uri.class.getClassLoader());
     }
 
     public static final Creator<Tweet> CREATOR = new Creator<Tweet>() {
@@ -144,6 +136,7 @@ public class Tweet implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeParcelable(account, flags);
         dest.writeString(date);
         dest.writeString(tweet);
         if (image == null) {
@@ -156,5 +149,6 @@ public class Tweet implements Parcelable {
         dest.writeString(repost);
         dest.writeString(like);
         dest.writeString(view);
+        dest.writeParcelable(uriImage, flags);
     }
 }

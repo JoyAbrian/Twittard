@@ -24,19 +24,19 @@ public class DataSource {
 
     private static ArrayList<Tweet> generateDummyTweets() {
         ArrayList<Tweet> tweets = new ArrayList<>();
-        tweets.add(new Tweet(accounts.get(0), "1 hari", "KENCENG BANGET TUH MOBIL", R.drawable.account_folkshit_post2, "352", "584", "11rb", "1,6jt"));
-        tweets.add(new Tweet(accounts.get(1), "03 April", "Satu kata buat orang ini", R.drawable.account_sosmedkeras_post1, "6,6rb", "5,6rb", "43rb", "9,1jt"));
-        tweets.add(new Tweet(accounts.get(2), "06 Maret", "122 años de gloria", R.drawable.account_kaka_post1, "875", "13rb", "116rb", "1,3jt"));
-        tweets.add(new Tweet(accounts.get(3), "1 hari", null, R.drawable.account_elonmusk_post1, "12rb", "47rb", "483rb", "59jt"));
-        tweets.add(new Tweet(accounts.get(0), "1 hari", "GEBER TEROS", R.drawable.account_folkshit_post3, "109", "68", "1,3rb", "143rb"));
-        tweets.add(new Tweet(accounts.get(1), "17 jam", "Lah kok", R.drawable.account_sosmedkeras_post2, "1,4rb", "3,6rb", "30rb", "2jt"));
-        tweets.add(new Tweet(accounts.get(0), "2 hari", "DISELESAIKAN DEGAN TINJU", R.drawable.account_folkshit_post4, "1rb", "2,2rb", "23rb", "3,6jt"));
-        tweets.add(new Tweet(accounts.get(5), "2 jam", "gfriend pas masih jaman sering manggung di acara musik sctv sama rcti, rumornya pernah berantem rebutan air di backstage sama member cherrybelle", R.drawable.account_yia_post1, "", "", "2", "144"));
-        tweets.add(new Tweet(accounts.get(4), "9 jam", "A reminder for those who slept through 7th grade social studies: we have a Constitutional Republic, not a direct democracy.", 1, "16", "14rb", "77", "2,4rb"));
-        tweets.add(new Tweet(accounts.get(5), "1 jam", "diantara semua member gfriend siapa yah yang bakal nikah duluan", 1, "7", "", "1", "222"));
-        tweets.add(new Tweet(accounts.get(0), "2 jam", "ASTAGA", R.drawable.account_folkshit_post1, "91", "52", "358", "32rb"));
-        tweets.add(new Tweet(accounts.get(5), "2 jam", "eh ini kalau moots ku risih liat aku bahas gfriend bub aja yah", 1, "", "", "", "100"));
-        tweets.add(new Tweet(accounts.get(3), "11 April", "X algorithm update coming soon with more bangers and less clickbait!", 1, "13rb", "19rb", "203rb", "61jt"));
+        tweets.add(new Tweet(accounts.get(0), "1 hari", "KENCENG BANGET TUH MOBIL", R.drawable.account_folkshit_post2, "352", "584", "11rb", "1,6jt", null));
+        tweets.add(new Tweet(accounts.get(1), "03 April", "Satu kata buat orang ini", R.drawable.account_sosmedkeras_post1, "6,6rb", "5,6rb", "43rb", "9,1jt", null));
+        tweets.add(new Tweet(accounts.get(2), "06 Maret", "122 años de gloria", R.drawable.account_kaka_post1, "875", "13rb", "116rb", "1,3jt", null));
+        tweets.add(new Tweet(accounts.get(3), "1 hari", null, R.drawable.account_elonmusk_post1, "12rb", "47rb", "483rb", "59jt", null));
+        tweets.add(new Tweet(accounts.get(0), "1 hari", "GEBER TEROS", R.drawable.account_folkshit_post3, "109", "68", "1,3rb", "143rb", null));
+        tweets.add(new Tweet(accounts.get(1), "17 jam", "Lah kok", R.drawable.account_sosmedkeras_post2, "1,4rb", "3,6rb", "30rb", "2jt", null));
+        tweets.add(new Tweet(accounts.get(0), "2 hari", "DISELESAIKAN DEGAN TINJU", R.drawable.account_folkshit_post4, "1rb", "2,2rb", "23rb", "3,6jt", null));
+        tweets.add(new Tweet(accounts.get(5), "2 jam", "gfriend pas masih jaman sering manggung di acara musik sctv sama rcti, rumornya pernah berantem rebutan air di backstage sama member cherrybelle", R.drawable.account_yia_post1, "", "", "2", "144", null));
+        tweets.add(new Tweet(accounts.get(4), "9 jam", "A reminder for those who slept through 7th grade social studies: we have a Constitutional Republic, not a direct democracy.", 1, "16", "14rb", "77", "2,4rb", null));
+        tweets.add(new Tweet(accounts.get(5), "1 jam", "diantara semua member gfriend siapa yah yang bakal nikah duluan", 1, "7", "", "1", "222", null));
+        tweets.add(new Tweet(accounts.get(0), "2 jam", "ASTAGA", R.drawable.account_folkshit_post1, "91", "52", "358", "32rb", null));
+        tweets.add(new Tweet(accounts.get(5), "2 jam", "eh ini kalau moots ku risih liat aku bahas gfriend bub aja yah", 1, "", "", "", "100", null));
+        tweets.add(new Tweet(accounts.get(3), "11 April", "X algorithm update coming soon with more bangers and less clickbait!", 1, "13rb", "19rb", "203rb", "61jt", null));
         return tweets;
     }
 

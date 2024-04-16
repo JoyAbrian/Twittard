@@ -96,7 +96,7 @@ public class PostingActivity extends AppCompatActivity {
             togglePost.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#00B2CA")));
             togglePost.setHintTextColor(ColorStateList.valueOf(Color.parseColor("#FFFFFF"))); // Set hint text color
             togglePost.setOnClickListener(v -> {
-                Tweet newTweet = new Tweet(DataSource.accounts.get(6), "0m", tweet, selectedImageUri, "", "", "", "");
+                Tweet newTweet = new Tweet(DataSource.accounts.get(6), "0m", tweet, 1, "", "", "", "", selectedImageUri);
                 DataSource.tweets.add(0, newTweet);
                 Intent intent = new Intent(PostingActivity.this, MainActivity.class);
                 startActivity(intent);

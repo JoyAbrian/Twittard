@@ -47,17 +47,32 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             holder.tweetText.setText(tweet.getTweet());
         }
 
-        if (tweet.getUriImage() == null) {
-            holder.tweetImage.setVisibility(View.GONE);
-            holder.tweetPicture.setVisibility(View.VISIBLE);
-            holder.tweetPicture.setImageResource(tweet.getImage());
-        } else {
-            holder.tweetPicture.setVisibility(View.GONE);
-            holder.tweetImage.setVisibility(View.VISIBLE);
-            holder.tweetImage.setImageURI(tweet.getUriImage());
+        if (tweet.getImage() == 1 && tweet.getUriImage() == null) {
+            holder.tweetUriImage.setVisibility(View.GONE);
+            holder.tweetDrawablePicture.setVisibility(View.GONE);
+        } else if (tweet.getImage() != 1 && tweet.getUriImage() == null) {
+            holder.tweetDrawablePicture.setVisibility(View.VISIBLE);
+            holder.tweetUriImage.setVisibility(View.GONE);
+            holder.tweetDrawablePicture.setImageResource(tweet.getImage());
+        } else if (tweet.getImage() == 1 && tweet.getUriImage() != null) {
+            holder.tweetDrawablePicture.setVisibility(View.GONE);
+            holder.tweetUriImage.setVisibility(View.VISIBLE);
+            holder.tweetUriImage.setImageURI(tweet.getUriImage());
         }
 
         holder.accountPicture.setOnClickListener(v -> {
+            Intent intent = new Intent(holder.itemView.getContext(), ProfileActivity.class);
+            intent.putExtra(ProfileActivity.EXTRA_ACCOUNT, tweet.getAccount());
+            holder.itemView.getContext().startActivity(intent);
+        });
+
+        holder.accountFullname.setOnClickListener(v -> {
+            Intent intent = new Intent(holder.itemView.getContext(), ProfileActivity.class);
+            intent.putExtra(ProfileActivity.EXTRA_ACCOUNT, tweet.getAccount());
+            holder.itemView.getContext().startActivity(intent);
+        });
+
+        holder.accountUsername.setOnClickListener(v -> {
             Intent intent = new Intent(holder.itemView.getContext(), ProfileActivity.class);
             intent.putExtra(ProfileActivity.EXTRA_ACCOUNT, tweet.getAccount());
             holder.itemView.getContext().startActivity(intent);
@@ -84,8 +99,8 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         private final TextView tweetReposts;
         private final TextView tweetLikes;
         private final TextView tweetViews;
-        private final ImageView tweetPicture;
-        private final ImageView tweetImage;
+        private final ImageView tweetDrawablePicture;
+        private final ImageView tweetUriImage;
         private final TextView tweetText;
         private final ImageView toggleDelete;
 
@@ -99,8 +114,8 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             tweetReposts = itemView.findViewById(R.id.tweetReposts);
             tweetLikes = itemView.findViewById(R.id.tweetLikes);
             tweetViews = itemView.findViewById(R.id.tweetViews);
-            tweetPicture = itemView.findViewById(R.id.tweetPicture);
-            tweetImage = itemView.findViewById(R.id.tweetImage);
+            tweetDrawablePicture = itemView.findViewById(R.id.tweetDrawablePicture);
+            tweetUriImage = itemView.findViewById(R.id.tweetUriImage);
             tweetText = itemView.findViewById(R.id.tweetText);
             toggleDelete = itemView.findViewById(R.id.toggleDelete);
         }
