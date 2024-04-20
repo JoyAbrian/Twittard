@@ -11,15 +11,30 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include
-            layout="@layout/template_profile"/>
+        <ProgressBar
+            android:id="@+id/loading_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
 
         <LinearLayout
-            android:id="@+id/tweetList"
+            android:id="@+id/profileParent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/black"
-            android:orientation="vertical" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/template_profile"/>
+
+            <LinearLayout
+                android:id="@+id/tweetList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                android:orientation="vertical" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

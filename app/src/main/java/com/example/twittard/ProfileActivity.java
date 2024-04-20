@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -21,6 +22,7 @@ public class ProfileActivity extends AppCompatActivity {
     public static final String EXTRA_ACCOUNT = "BLABLABLA";
     private Account account;
 
+    private ProgressBar loading_bar;
     private ImageView toggleBack;
     private ImageView profileBanner;
     private CircleImageView profilePicture;
@@ -30,12 +32,14 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView profileDate;
     private TextView profileFollowing;
     private TextView profileFollower;
+    private LinearLayout tweetList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        loading_bar = findViewById(R.id.loading_bar);
         toggleBack = findViewById(R.id.toggleBack);
         profileBanner = findViewById(R.id.profileBanner);
         profilePicture = findViewById(R.id.profilePicture);
@@ -45,12 +49,17 @@ public class ProfileActivity extends AppCompatActivity {
         profileDate = findViewById(R.id.profileDate);
         profileFollowing = findViewById(R.id.profileFollowing);
         profileFollower = findViewById(R.id.profileFollower);
+        tweetList = findViewById(R.id.tweetList);
 
         account = getIntent().getParcelableExtra(EXTRA_ACCOUNT);
         toggleBack.setOnClickListener(v -> {
             finish();
         });
+        parseExtraAccount(account);
+        showTweets(account);
+    }
 
+    private void parseExtraAccount(Account account) {
         profileBanner.setImageResource(account.getProfileBanner());
         profilePicture.setImageResource(account.getProfilePhoto());
         profileFullname.setText(account.getFullname());
@@ -59,9 +68,9 @@ public class ProfileActivity extends AppCompatActivity {
         profileDate.setText(account.getSignDate());
         profileFollowing.setText(account.getFollowing());
         profileFollower.setText(account.getFollowers());
+    }
 
-        LinearLayout tweetList = findViewById(R.id.tweetList);
-
+    private void showTweets(Account account) {
         ArrayList<Tweet> accountTweets = new ArrayList<>();
         for (Tweet tweet : DataSource.tweets) {
             if (tweet.getAccount().getUsername().equals(account.getUsername())) {
