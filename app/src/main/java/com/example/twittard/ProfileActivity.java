@@ -1,6 +1,8 @@
 package com.example.twittard;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,6 +17,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -32,7 +36,10 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView profileDate;
     private TextView profileFollowing;
     private TextView profileFollower;
-    private LinearLayout tweetList;
+    private LinearLayout tweetList, profileParent;
+
+    Executor executor = Executors.newSingleThreadExecutor();
+    Handler handler = new Handler(Looper.myLooper());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +57,34 @@ public class ProfileActivity extends AppCompatActivity {
         profileFollowing = findViewById(R.id.profileFollowing);
         profileFollower = findViewById(R.id.profileFollower);
         tweetList = findViewById(R.id.tweetList);
+        profileParent = findViewById(R.id.profileParent);
 
-        account = getIntent().getParcelableExtra(EXTRA_ACCOUNT);
+        loading_bar.setVisibility(View.VISIBLE);
+        profileParent.setVisibility(View.GONE);
+
         toggleBack.setOnClickListener(v -> {
             finish();
         });
-        parseExtraAccount(account);
-        showTweets(account);
+
+        executor.execute(() -> {
+            account = getIntent().getParcelableExtra(EXTRA_ACCOUNT);
+
+            ArrayList<Tweet> accountTweets = new ArrayList<>();
+            for (Tweet tweet : DataSource.tweets) {
+                if (tweet.getAccount().getUsername().equals(account.getUsername())) {
+                    accountTweets.add(tweet);
+                }
+            }
+
+            ArrayList<Tweet> finalAccountTweets = accountTweets;
+
+            handler.post(() -> {
+                loading_bar.setVisibility(View.GONE);
+                profileParent.setVisibility(View.VISIBLE);
+                parseExtraAccount(account);
+                showTweets(finalAccountTweets);
+            });
+        });
     }
 
     private void parseExtraAccount(Account account) {
@@ -70,14 +98,7 @@ public class ProfileActivity extends AppCompatActivity {
         profileFollower.setText(account.getFollowers());
     }
 
-    private void showTweets(Account account) {
-        ArrayList<Tweet> accountTweets = new ArrayList<>();
-        for (Tweet tweet : DataSource.tweets) {
-            if (tweet.getAccount().getUsername().equals(account.getUsername())) {
-                accountTweets.add(tweet);
-            }
-        }
-
+    private void showTweets(ArrayList<Tweet> accountTweets) {
         int tweetSize = accountTweets.size();
         for (int i = 0; i < tweetSize; i++) {
             View tweetView = LayoutInflater.from(this).inflate(R.layout.template_tweet, null);
