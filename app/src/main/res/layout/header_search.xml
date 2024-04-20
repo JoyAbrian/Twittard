@@ -13,6 +13,7 @@
         android:src="@drawable/header_profile"/>
 
     <ImageView
+        android:id="@+id/header_search"
         android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_weight="7"
@@ -20,6 +21,7 @@
         android:src="@drawable/header_search"/>
 
     <EditText
+        android:id="@+id/search_bar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="8"
@@ -29,6 +31,7 @@
         android:visibility="gone"/>
 
     <ImageView
+        android:id="@+id/toggleSetting"
         android:layout_width="0dp"
         android:layout_height="25dp"
         android:layout_weight="1"

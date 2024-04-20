@@ -13,6 +13,7 @@
         android:src="@drawable/header_profile"/>
 
     <TextView
+        android:id="@+id/header_title"
         android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_gravity="center"
@@ -23,6 +24,7 @@
         android:layout_marginLeft="20dp"/>
 
     <EditText
+        android:id="@+id/search_bar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="8"
@@ -32,13 +34,15 @@
         android:visibility="gone"/>
 
     <ImageView
+        android:id="@+id/toggleSearch"
         android:layout_width="0dp"
         android:layout_height="25dp"
         android:layout_weight="1"
         android:layout_gravity="center"
         android:src="@drawable/footer_search"/>
-    
+
     <ImageView
+        android:id="@+id/toggleAddCommunity"
         android:layout_width="0dp"
         android:layout_height="25dp"
         android:layout_weight="1"
