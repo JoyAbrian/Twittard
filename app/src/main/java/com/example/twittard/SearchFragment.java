@@ -3,6 +3,7 @@ package com.example.twittard;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -142,10 +143,7 @@ public class SearchFragment extends Fragment {
             }
 
             ArrayList<Account> finalAccountSearchOutput = accountSearchOutput;
-            int finalAccountSearchOutput_size = finalAccountSearchOutput.size();
-
             ArrayList<Tweet> finalTweetSearchOutput = tweetSearchOutput;
-            int finalTweetSearchOutput_size = finalTweetSearchOutput.size();
 
             handler.post(() -> {
                 rvAccount.removeAllViews();
@@ -153,6 +151,10 @@ public class SearchFragment extends Fragment {
 
                 for (Account account : finalAccountSearchOutput) {
                     rvAccount.addView(inflateTemplateAccount(account));
+                }
+
+                for (Tweet tweet : finalTweetSearchOutput) {
+                    rvTweet.addView(inflateTemplateTweet(tweet));
                 }
 
                 searchOutput.setVisibility(View.VISIBLE);
@@ -185,11 +187,75 @@ public class SearchFragment extends Fragment {
         profileUsername.setText(account.getUsername());
 
         accountView.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), ProfileActivity.class);
-            intent.putExtra(ProfileActivity.EXTRA_ACCOUNT, account);
-            getContext().startActivity(intent);
+            openProfile(account);
         });
 
         return accountView;
+    }
+
+    private View inflateTemplateTweet(Tweet tweet) {
+        View tweetView = LayoutInflater.from(getContext()).inflate(R.layout.template_tweet, null);
+
+        CircleImageView accountPicture = tweetView.findViewById(R.id.accountPicture);
+        TextView accountFullname = tweetView.findViewById(R.id.accountFullname);
+        TextView accountUsername = tweetView.findViewById(R.id.accountUsername);
+        TextView tweetDate = tweetView.findViewById(R.id.tweetDate);
+        TextView tweetComments = tweetView.findViewById(R.id.tweetComments);
+        TextView tweetReposts = tweetView.findViewById(R.id.tweetReposts);
+        TextView tweetLikes = tweetView.findViewById(R.id.tweetLikes);
+        TextView tweetViews = tweetView.findViewById(R.id.tweetViews);
+        ImageView tweetDrawablePicture = tweetView.findViewById(R.id.tweetDrawablePicture);
+        ImageView tweetUriImage = tweetView.findViewById(R.id.tweetUriImage);
+        TextView tweetText = tweetView.findViewById(R.id.tweetText);
+        ImageView toggleDelete = tweetView.findViewById(R.id.toggleDelete);
+
+        accountPicture.setImageResource(tweet.getAccount().getProfilePhoto());
+        accountFullname.setText(tweet.getAccount().getFullname());
+        accountUsername.setText(tweet.getAccount().getUsername());
+        tweetDate.setText(tweet.getDate());
+        tweetComments.setText(tweet.getComment());
+        tweetReposts.setText(tweet.getRepost());
+        tweetLikes.setText(tweet.getLike());
+        tweetViews.setText(tweet.getView());
+
+        if (tweet.getTweet() == null) {
+            tweetText.setVisibility(View.GONE);
+        } else {
+            tweetText.setVisibility(View.VISIBLE);
+            tweetText.setText(tweet.getTweet());
+        }
+
+        if (tweet.getImage() == 1 && tweet.getUriImage() == null) {
+            tweetUriImage.setVisibility(View.GONE);
+            tweetDrawablePicture.setVisibility(View.GONE);
+        } else if (tweet.getImage() != 1 && tweet.getUriImage() == null) {
+            tweetDrawablePicture.setVisibility(View.VISIBLE);
+            tweetUriImage.setVisibility(View.GONE);
+            tweetDrawablePicture.setImageResource(tweet.getImage());
+        } else if (tweet.getImage() == 1 && tweet.getUriImage() != null) {
+            tweetDrawablePicture.setVisibility(View.GONE);
+            tweetUriImage.setVisibility(View.VISIBLE);
+            tweetUriImage.setImageURI(tweet.getUriImage());
+        }
+
+        accountPicture.setOnClickListener(v -> {
+            openProfile(tweet.getAccount());
+        });
+
+        accountFullname.setOnClickListener(v -> {
+            openProfile(tweet.getAccount());
+        });
+
+        accountUsername.setOnClickListener(v -> {
+            openProfile(tweet.getAccount());
+        });
+
+        return tweetView;
+    }
+
+    private void openProfile(Account account) {
+        Intent intent = new Intent(requireContext(), ProfileActivity.class);
+        intent.putExtra(ProfileActivity.EXTRA_ACCOUNT, account);
+        requireContext().startActivity(intent);
     }
 }
