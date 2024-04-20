@@ -22,12 +22,22 @@
         android:textColor="#D8D8D8"
         android:layout_marginLeft="20dp"/>
 
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="8"
+        android:layout_gravity="center"
+        android:hint="Cari Komunitas"
+        android:textColorHint="#555555"
+        android:visibility="gone"/>
+
     <ImageView
         android:layout_width="0dp"
         android:layout_height="25dp"
         android:layout_weight="1"
         android:layout_gravity="center"
         android:src="@drawable/footer_search"/>
+
 
     <ImageView
         android:layout_width="0dp"
