@@ -1,5 +1,6 @@
 package com.example.twittard;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.core.widget.NestedScrollView;
@@ -155,6 +156,7 @@ public class SearchFragment extends Fragment {
                 }
 
                 searchOutput.setVisibility(View.VISIBLE);
+                loading_bar.setVisibility(View.GONE);
             });
         });
     }
@@ -181,6 +183,12 @@ public class SearchFragment extends Fragment {
         profilePicture.setImageResource(account.getProfilePhoto());
         profileFullname.setText(account.getFullname());
         profileUsername.setText(account.getUsername());
+
+        accountView.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), ProfileActivity.class);
+            intent.putExtra(ProfileActivity.EXTRA_ACCOUNT, account);
+            getContext().startActivity(intent);
+        });
 
         return accountView;
     }
