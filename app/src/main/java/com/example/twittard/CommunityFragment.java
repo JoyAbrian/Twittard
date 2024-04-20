@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class CommunityFragment extends Fragment {
     private ImageView toggleSearch, toggleAddCommunity;
     private EditText search_bar;
     private ProgressBar loading_bar;
+    private ScrollView scrollView1, scrollView2;
 
     Executor executor = Executors.newSingleThreadExecutor();
     Handler handler = new Handler(Looper.getMainLooper());
@@ -56,6 +58,8 @@ public class CommunityFragment extends Fragment {
         search_bar = rootView.findViewById(R.id.search_bar);
         loading_bar = rootView.findViewById(R.id.loading_bar);
         searchOutputs = rootView.findViewById(R.id.searchOutputs);
+        scrollView1 = rootView.findViewById(R.id.scrollView1);
+        scrollView2 = rootView.findViewById(R.id.scrollView2);
 
         int communities_size = communities.size();
         for (int i = 0; i < communities_size; i++) {
@@ -66,10 +70,10 @@ public class CommunityFragment extends Fragment {
             header_title.setVisibility(View.GONE);
             toggleSearch.setVisibility(View.GONE);
             toggleAddCommunity.setVisibility(View.GONE);
-            parents.setVisibility(View.GONE);
+            scrollView1.setVisibility(View.GONE);
 
             search_bar.setVisibility(View.VISIBLE);
-            parentsSearch.setVisibility(View.VISIBLE);
+            scrollView2.setVisibility(View.VISIBLE);
         });
 
         search_bar.addTextChangedListener(new TextWatcher() {
@@ -93,10 +97,11 @@ public class CommunityFragment extends Fragment {
     }
 
     private void loadSearchOutput(String searchInput) {
-        ArrayList<Community> communitySearchOutput = new ArrayList<>();
+        loading_bar.setVisibility(View.VISIBLE);
         Pattern pattern = Pattern.compile(Pattern.quote(searchInput), Pattern.CASE_INSENSITIVE);
 
         executor.execute(() -> {
+            ArrayList<Community> communitySearchOutput = new ArrayList<>();
             DataSource dataSource = new DataSource();
             communities = dataSource.communities;
 
@@ -107,18 +112,17 @@ public class CommunityFragment extends Fragment {
                     communitySearchOutput.add(communities.get(i));
                 }
             }
-        });
 
-        ArrayList<Community> finalCommunitySearchOutput = communitySearchOutput;
-        int finalCommunitySearchOutputSize = finalCommunitySearchOutput.size();
+            handler.post(() -> {
+                searchOutputs.removeAllViews();
 
-        handler.post(() -> {
-            for (int i = 0; i < finalCommunitySearchOutputSize; i++) {
-                searchOutputs.addView(inflateTemplate(finalCommunitySearchOutput.get(i)));
-            }
+                for (Community community : communitySearchOutput) {
+                    searchOutputs.addView(inflateTemplate(community));
+                }
 
-            loading_bar.setVisibility(View.GONE);
-            searchOutputs.setVisibility(View.VISIBLE);
+                loading_bar.setVisibility(View.GONE);
+                searchOutputs.setVisibility(View.VISIBLE);
+            });
         });
     }
 
