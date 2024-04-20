@@ -84,6 +84,7 @@ public class CommunityFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                searchOutputs.setVisibility(View.GONE);
                 loadSearchOutput(search_bar.getText().toString());
             }
 
@@ -107,8 +108,9 @@ public class CommunityFragment extends Fragment {
 
             int communities_size = communities.size();
             for (int i = 0; i < communities_size; i++) {
-                Matcher matcher = pattern.matcher(communities.get(i).getName());
-                if (matcher.find()) {
+                Matcher matcherName = pattern.matcher(communities.get(i).getName());
+                Matcher matcherType = pattern.matcher(communities.get(i).getType());
+                if (matcherName.find() || matcherType.find()) {
                     communitySearchOutput.add(communities.get(i));
                 }
             }
