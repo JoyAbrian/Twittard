@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/black"
+    android:layout_marginHorizontal="10dp">
+
+    <ImageView
+        android:id="@+id/profileBanner"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="@drawable/banner_anonym"
+        android:scaleType="fitXY" />
+
+    <LinearLayout
+        android:id="@+id/parents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profileBanner"
+        android:background="@color/black"
+        android:layout_marginLeft="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/profileFullname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="fullname"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/profileNickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="nickname"
+            android:textColor="#9F9F9F"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/account_type"
+                app:tint="#C8C8C8" />
+
+
+            <TextView
+                android:id="@+id/profileType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="type"
+                android:textColor="#9F9F9F"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/account_calendar"
+                app:tint="#C8C8C8" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bergabung"
+                android:textColor="#9F9F9F"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"/>
+
+            <TextView
+                android:id="@+id/profileDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="tanggal"
+                android:textColor="#9F9F9F"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="2dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="87dp"
+        android:layout_height="87dp"
+        android:src="@color/black"
+        android:layout_below="@id/profileBanner"
+        android:layout_marginTop="-43dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profilePicture"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/profile_anonym"
+        android:layout_below="@id/profileBanner"
+        android:layout_marginTop="-40dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="23dp"/>
+
+</RelativeLayout>
