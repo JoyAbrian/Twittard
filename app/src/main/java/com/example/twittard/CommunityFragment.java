@@ -74,6 +74,12 @@ public class CommunityFragment extends Fragment {
 
             search_bar.setVisibility(View.VISIBLE);
             scrollView2.setVisibility(View.VISIBLE);
+
+            for (int i = 0; i < communities_size; i++) {
+                searchOutputs.addView(inflateTemplate(communities.get(i)));
+                loading_bar.setVisibility(View.GONE);
+                searchOutputs.setVisibility(View.VISIBLE);
+            }
         });
 
         search_bar.addTextChangedListener(new TextWatcher() {
