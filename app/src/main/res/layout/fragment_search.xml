@@ -13,7 +13,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
-    <androidx.core.widget.NestedScrollView
+    <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -29,8 +29,8 @@
             <ProgressBar
                 android:id="@+id/loading_bar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone"/>
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/searchOutput"
@@ -47,29 +47,41 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvAccount"
+                <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="5dp"/>
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/rvAccount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" />
+
+                </HorizontalScrollView>
 
                 <!-- Second RecyclerView -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#515151"/>
+                    android:background="#515151" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvTweet"
+                <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:id="@+id/rvTweet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+                </ScrollView>
 
             </LinearLayout>
 
         </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
+    </ScrollView>
 
     <ScrollView
         android:id="@+id/scrollView2"
