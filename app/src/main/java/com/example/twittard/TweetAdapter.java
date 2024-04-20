@@ -64,21 +64,15 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         }
 
         holder.accountPicture.setOnClickListener(v -> {
-            Intent intent = new Intent(holder.itemView.getContext(), ProfileActivity.class);
-            intent.putExtra(ProfileActivity.EXTRA_ACCOUNT, tweet.getAccount());
-            holder.itemView.getContext().startActivity(intent);
+            openProfile(holder, tweet.getAccount());
         });
 
         holder.accountFullname.setOnClickListener(v -> {
-            Intent intent = new Intent(holder.itemView.getContext(), ProfileActivity.class);
-            intent.putExtra(ProfileActivity.EXTRA_ACCOUNT, tweet.getAccount());
-            holder.itemView.getContext().startActivity(intent);
+            openProfile(holder, tweet.getAccount());
         });
 
         holder.accountUsername.setOnClickListener(v -> {
-            Intent intent = new Intent(holder.itemView.getContext(), ProfileActivity.class);
-            intent.putExtra(ProfileActivity.EXTRA_ACCOUNT, tweet.getAccount());
-            holder.itemView.getContext().startActivity(intent);
+            openProfile(holder, tweet.getAccount());
         });
 
         holder.toggleDelete.setOnClickListener(v -> {
@@ -137,5 +131,11 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             tweetText = itemView.findViewById(R.id.tweetText);
             toggleDelete = itemView.findViewById(R.id.toggleDelete);
         }
+    }
+
+    private void openProfile(@NonNull TweetAdapter.ViewHolder holder, Account account) {
+        Intent intent = new Intent(holder.itemView.getContext(), ProfileActivity.class);
+        intent.putExtra(ProfileActivity.EXTRA_ACCOUNT, account);
+        holder.itemView.getContext().startActivity(intent);
     }
 }
