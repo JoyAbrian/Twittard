@@ -24,6 +24,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
@@ -142,6 +143,13 @@ public class SearchFragment extends Fragment {
                 }
             }
 
+            HashSet<Account> uniqueAccounts = new HashSet<>();
+            for (Account account : accountSearchOutput) {
+                uniqueAccounts.add(account);
+            }
+            accountSearchOutput.clear();
+            accountSearchOutput.addAll(uniqueAccounts);
+
             ArrayList<Account> finalAccountSearchOutput = accountSearchOutput;
             ArrayList<Tweet> finalTweetSearchOutput = tweetSearchOutput;
 
@@ -164,31 +172,17 @@ public class SearchFragment extends Fragment {
     }
 
     private View inflateTemplateAccount(Account account) {
-        View accountView = LayoutInflater.from(getContext()).inflate(R.layout.template_profile, null);
-        CircleImageView profilePicture = accountView.findViewById(R.id.profilePicture);
+        View accountView = LayoutInflater.from(getContext()).inflate(R.layout.template_search_account, null);
+
+        CircleImageView profilePhoto = accountView.findViewById(R.id.profilePhoto);
         TextView profileFullname = accountView.findViewById(R.id.profileFullname);
-        TextView profileUsername = accountView.findViewById(R.id.profileNickname);
+        TextView profileUsername = accountView.findViewById(R.id.profileUsername);
+        TextView profileType = accountView.findViewById(R.id.profileType);
 
-        // To remove
-        ImageView profileBanner = accountView.findViewById(R.id.profileBanner);
-        LinearLayout type = accountView.findViewById(R.id.type);
-        LinearLayout date = accountView.findViewById(R.id.date);
-        LinearLayout profileFollow = accountView.findViewById(R.id.profileFollow);
-        LinearLayout parent2 = accountView.findViewById(R.id.parent2);
-
-        profileBanner.setVisibility(View.GONE);
-        type.setVisibility(View.GONE);
-        date.setVisibility(View.GONE);
-        profileFollow.setVisibility(View.GONE);
-        parent2.setVisibility(View.GONE);
-
-        profilePicture.setImageResource(account.getProfilePhoto());
+        profilePhoto.setImageResource(account.getProfilePhoto());
         profileFullname.setText(account.getFullname());
         profileUsername.setText(account.getUsername());
-
-        accountView.setOnClickListener(v -> {
-            openProfile(account);
-        });
+        profileType.setText(account.getBirthdate());
 
         return accountView;
     }
@@ -208,6 +202,8 @@ public class SearchFragment extends Fragment {
         ImageView tweetUriImage = tweetView.findViewById(R.id.tweetUriImage);
         TextView tweetText = tweetView.findViewById(R.id.tweetText);
         ImageView toggleDelete = tweetView.findViewById(R.id.toggleDelete);
+
+        toggleDelete.setVisibility(View.GONE);
 
         accountPicture.setImageResource(tweet.getAccount().getProfilePhoto());
         accountFullname.setText(tweet.getAccount().getFullname());
