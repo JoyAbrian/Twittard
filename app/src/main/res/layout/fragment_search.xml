@@ -39,6 +39,13 @@
                 android:orientation="vertical">
 
                 <!-- First RecyclerView -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Orang"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"/>
+
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">

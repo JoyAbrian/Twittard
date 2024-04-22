@@ -103,13 +103,14 @@ public class SearchFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                searchOutput.setVisibility(View.GONE);
-                loadSearchOutput(search_bar.getText().toString());
+//                searchOutput.setVisibility(View.GONE);
+//                loadSearchOutput(search_bar.getText().toString());
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                // No action needed
+                searchOutput.setVisibility(View.GONE);
+                loadSearchOutput(search_bar.getText().toString());
             }
         });
 
@@ -183,6 +184,10 @@ public class SearchFragment extends Fragment {
         profileFullname.setText(account.getFullname());
         profileUsername.setText(account.getUsername());
         profileType.setText(account.getBirthdate());
+
+        accountView.setOnClickListener(v -> {
+            openProfile(account);
+        });
 
         return accountView;
     }
