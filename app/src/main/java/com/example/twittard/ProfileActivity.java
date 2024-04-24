@@ -67,6 +67,12 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         executor.execute(() -> {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
             account = getIntent().getParcelableExtra(EXTRA_ACCOUNT);
 
             ArrayList<Tweet> accountTweets = new ArrayList<>();

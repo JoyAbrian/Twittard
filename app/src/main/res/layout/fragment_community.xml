@@ -53,8 +53,7 @@
             android:id="@+id/parentsSearch"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_gravity="center">
+            android:orientation="vertical">
 
             <ProgressBar
                 android:id="@+id/loading_bar"
